@@ -1,7 +1,7 @@
 # @size: pection
 # @Date:   2021-01-28T15:00:55+07:00
 # @Last modified by:   pection
-# @Last modified time: 2021-01-29T09:38:17+07:00
+# @Last modified time: 2021-01-29T09:58:48+07:00
 
 
 
@@ -16,7 +16,7 @@ def create_book_table() -> None:
         cursor = connection.cursor()
         # SQLite automatically makes `integer primary key` row auto-incrementing (see link in further reading)
         cursor.execute(
-        'CREATE TABLE furniture(id integer primary key, name text, size text, prize integer, image text, link text, read integer default 0)')
+        'CREATE TABLE furniture(id integer primary key, name text, size text, price integer, image text, link text, read integer default 0)')
 
 
 def get_all_furniture() -> List[Furniture]:
@@ -28,12 +28,12 @@ def get_all_furniture() -> List[Furniture]:
     return furniture
 
 
-def insert_book(name: str, size: str) -> None:
+def insert_book(name: str, size: str, price: int, image: str, link: str) -> None:
     with DatabaseConnection('data.db') as connection:
         cursor = connection.cursor()
 
         cursor.execute(
-            'INSERT INTO furniture (name, size) VALUES (?, ?)', (name, size))
+            'INSERT INTO furniture (name, size, price, image, link ) VALUES (?, ?, ?, ?, ?)', (name, size, price, image,link))
 
 
 def mark_book_as_read(name: str) -> None:

@@ -3,7 +3,7 @@
 # @Email:  pection.naphat@gmail.com
 # @Filename: createpd.py
 # @Last modified by:   pection
-# @Last modified time: 2021-01-29T09:39:44+07:00
+# @Last modified time: 2021-01-29T15:26:49+07:00
 
 
 # from utils import database
@@ -13,7 +13,6 @@ import pandas as pd
 
 if __name__ == '__main__':
 
-    # os.chdir(os.getcwd()+"/dataset")
     # product_code = filepath[index_csv - 3:index_csv - 1]
 
     columns_name = [
