@@ -9,7 +9,7 @@
 # from utils import database
 import pandas as pd
 # import numpy as np
-# import ipdb ; ipdb.set_trace()
+import ipdb ; ipdb.set_trace()
 
 if __name__ == '__main__':
 
