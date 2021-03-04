@@ -8,7 +8,7 @@ import pandas as pd
 
 class ManageProductCode:
 
-    def __init__(self, filepath):
+    def __init__(self, filepath: str):
         self.file_path = filepath
         index_csv = filepath.index("csv")
 

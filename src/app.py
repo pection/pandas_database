@@ -9,7 +9,6 @@
 # from utils import database
 import pandas as pd
 # import numpy as np
-import ipdb ; ipdb.set_trace()
 
 if __name__ == '__main__':
 
@@ -30,8 +29,7 @@ if __name__ == '__main__':
     index_csv = dataset_path.index("csv")
     product_code = dataset_path[index_csv - 3:index_csv - 1]
 
-    breakpoint()
-
+    print(product_code)
     # os.chdir(os.getcwd()+"/dataset")
     # file_path = [os.path.abspath(x) for x in os.listdir(os.getcwd())]
     #

@@ -11,8 +11,11 @@ from utils.database_connection import DatabaseConnection
 
 Furniture = Tuple[int, str, str, int, str, str, int]
 
-def create_book_table() -> None:
-    with DatabaseConnection('data.db') as connection:
+
+# def read_csv_file() -> None:
+
+def create_furniture_table() -> None:
+    with DatabaseConnection('furniture_data.db') as connection:
         cursor = connection.cursor()
         # SQLite automatically makes `integer primary key` row auto-incrementing (see link in further reading)
         cursor.execute(
@@ -20,7 +23,7 @@ def create_book_table() -> None:
 
 
 def get_all_furniture() -> List[Furniture]:
-    with DatabaseConnection('data.db') as connection:
+    with DatabaseConnection('furniture_data.db') as connection:
         cursor = connection.cursor()
 
         cursor.execute('SELECT * FROM furniture')
@@ -29,7 +32,7 @@ def get_all_furniture() -> List[Furniture]:
 
 
 def insert_book(name: str, size: str, price: int, image: str, link: str) -> None:
-    with DatabaseConnection('data.db') as connection:
+    with DatabaseConnection('furniture_data.db') as connection:
         cursor = connection.cursor()
 
         cursor.execute(
@@ -37,14 +40,14 @@ def insert_book(name: str, size: str, price: int, image: str, link: str) -> None
 
 
 def mark_book_as_read(name: str) -> None:
-    with DatabaseConnection('data.db') as connection:
+    with DatabaseConnection('furniture_data.db') as connection:
         cursor = connection.cursor()
 
         cursor.execute('UPDATE furniture SET read=1 WHERE name=?', (name,))
 
 
 def delete_book(name: str) -> None:
-    with DatabaseConnection('data.db') as connection:
+    with DatabaseConnection('furniture_data.db') as connection:
         cursor = connection.cursor()
 
         cursor.execute('DELETE FROM furniture WHERE name=?', (name,))
