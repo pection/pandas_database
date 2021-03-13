@@ -6,14 +6,14 @@
 # @Last modified time: 2021-01-29T15:26:49+07:00
 
 
-# from utils import database
+from utils.managedproduct import ManageProductCode
 import pandas as pd
+import os ,sys
 # import numpy as np
-
+import pdb 
 if __name__ == '__main__':
 
     # product_code = filepath[index_csv - 3:index_csv - 1]
-
     columns_name = [
         "Product_Name",
         "Product_Size",
@@ -22,19 +22,19 @@ if __name__ == '__main__':
         "Product_Link",
         "Product_Code"
     ]
+    # print(__file__)
+    # dataset_path = '/home/pection/Backup/Program/pandas_database/src/dataset/Bed_dataset_BE.csv'
 
-    dataset_path = '/home/pection/Backup/Program/pandas_database/src/dataset/Bed_dataset_BE.csv'
+    # df = pd.read_csv(dataset_path, names=columns_name)
+    # index_csv = dataset_path.index("csv")
+    # product_code = dataset_path[index_csv - 3:index_csv - 1]
+    # print(product_code)
 
-    df = pd.read_csv(dataset_path, names=columns_name)
-    index_csv = dataset_path.index("csv")
-    product_code = dataset_path[index_csv - 3:index_csv - 1]
-
-    print(product_code)
-    # os.chdir(os.getcwd()+"/dataset")
-    # file_path = [os.path.abspath(x) for x in os.listdir(os.getcwd())]
-    #
-    # Working_dest = ManageProductCode(file_path[1])
-    # Working_dest.get_product_details()
-    # Working_dest.read_csv_file()
-    # product_code_list= Working_dest.add_product_code()
-    # print(product_code_list)
+    os.chdir(os.getcwd()+"/dataset")
+    file_path = [os.path.abspath(x) for x in os.listdir(os.getcwd())]
+    
+    Working_dest = ManageProductCode(file_path[1])
+    Working_dest.read_csv_file()
+    Working_dest.get_product_details()
+    Working_dest.add_product_code()
+    breakpoint()    
