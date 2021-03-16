@@ -27,9 +27,10 @@ if __name__ == '__main__':
     file_json =open('/home/pection/Backup/Program/pandas_database/src/dataset/pathdb.json',)
     path_file = json.load(file_json)
     file_json.close()
-    for i in namecsv:
-        print(path_file[i])
-    print(path_file)
+
+
+    
+
     # # print(__file__)
     # # dataset_path = '/home/pection/Backup/Program/pandas_database/src/dataset/Bed_dataset_BE.csv'
 

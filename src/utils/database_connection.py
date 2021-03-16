@@ -1,3 +1,8 @@
+# @Author: Naphat Nithisopa <pection>
+# @Date:   2020-12-29T11:34:23+07:00
+# @Email:  pection.naphat@gmail.com
+# @Last modified by:   pection
+# @Last modified time: 2021-01-29T09:21:58+07:00
 import sqlite3
 
 

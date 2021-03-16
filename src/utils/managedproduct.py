@@ -22,7 +22,7 @@ class ManageProductCode:
             "Product_ID"
         ]
 
-    def read_csv_file(self):
+    def read_csv_file(self) -> None:
         index_csv = self.file_path.index("csv")
 
         self.product_code = self.file_path[index_csv - 3:index_csv - 1]
@@ -30,7 +30,7 @@ class ManageProductCode:
         self.values = self.df.shape[0]+1
 
         print(f'Read csv file and convert to DataFrame successfully')
-    def update_csv_file(self):
+    def update_csv_file(self) -> None:
         self.df.to_csv(self.file_path,header=False)
     def get_product_details(self):
         print(f'Your path is {self.file_path}')
@@ -38,7 +38,7 @@ class ManageProductCode:
         print(f'Your CSV file have {self.values} row')    
         return [self.file_path ,self.product_code]
     
-    def add_product_code(self):
+    def add_product_code(self) -> None:
         
         product_id = [self.product_code+"-"+str(i) for i in range(1,self.values)]
         self.df['Product_ID'] = product_id 
@@ -70,4 +70,6 @@ class ManageProductCode:
             cursor = connection.cursor()
             cursor.execute(
                 'INSERT INTO furniture (name, size, price, image, link, code) VALUES (?, ?, ?, ?, ?, ?)', (dataframe["Product_Name"], dataframe["Product_Size"], dataframe["Product_Prize"], dataframe["Product_Image"],dataframe["Product_Link"],dataframe["Product_ID"]))
-    
+    def remove_link_string(self,dataframe) -> None:
+        dataframe=list(map(lambda x: x.replace('https://','').replace('.jpg_50x50','').replace('//',''),dataframe))
+        
