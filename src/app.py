@@ -11,6 +11,7 @@ import pandas as pd
 import os ,sys
 # import numpy as np
 import pdb 
+import json
 if __name__ == '__main__':
 
     # product_code = filepath[index_csv - 3:index_csv - 1]
@@ -20,21 +21,32 @@ if __name__ == '__main__':
         "Prodcut_Prize",
         "Product_Image",
         "Product_Link",
-        "Product_Code"
+        "Product_ID"
     ]
-    # print(__file__)
-    # dataset_path = '/home/pection/Backup/Program/pandas_database/src/dataset/Bed_dataset_BE.csv'
+    namecsv=["DT","SF","BE","CT","WD","ST","LC","NT","DC","TS"]
+    file_json =open('/home/pection/Backup/Program/pandas_database/src/dataset/pathdb.json',)
+    path_file = json.load(file_json)
+    file_json.close()
+    for i in namecsv:
+        print(path_file[i])
+    print(path_file)
+    # # print(__file__)
+    # # dataset_path = '/home/pection/Backup/Program/pandas_database/src/dataset/Bed_dataset_BE.csv'
 
-    # df = pd.read_csv(dataset_path, names=columns_name)
-    # index_csv = dataset_path.index("csv")
-    # product_code = dataset_path[index_csv - 3:index_csv - 1]
-    # print(product_code)
+    # # df = pd.read_csv(dataset_path, names=columns_name)
+    # # index_csv = dataset_path.index("csv")
+    # # product_code = dataset_path[index_csv - 3:index_csv - 1]
+    # # print(product_code)
 
-    os.chdir(os.getcwd()+"/dataset")
-    file_path = [os.path.abspath(x) for x in os.listdir(os.getcwd())]
-    
-    Working_dest = ManageProductCode(file_path[1])
-    Working_dest.read_csv_file()
-    Working_dest.get_product_details()
-    Working_dest.add_product_code()
-    breakpoint()    
+    # os.chdir(os.getcwd()+"/dataset")
+    # file_path = [os.path.abspath(x) for x in os.listdir(os.getcwd())]
+    # namecsv=["DT","SF","BE","CT","WD","ST","LC","NT","DC","TS"]
+    # zipfile = zip(namecsv,file_path)
+    # dict_zip = dict(zipfile)
+
+    # Working_dest = ManageProductCode(file_path[1])
+    # Working_dest.read_csv_file()
+    # Working_dest.get_product_details()
+    # print(Working_dest.df)
+    # Working_dest.add_product_code()
+    # Working_dest.update_csv_file()

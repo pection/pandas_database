@@ -5,8 +5,7 @@
 # @Last modified time: 2021-01-29T09:21:58+07:00
 import pandas as pd
 from typing import List, Tuple
-
-
+from utils.database_connection import DatabaseConnection
 class ManageProductCode:
     pd.set_option('display.max_rows', 500)
     pd.set_option('display.max_columns', 500)
@@ -17,9 +16,10 @@ class ManageProductCode:
         self.columns_name = [
             "Product_Name",
             "Product_Size",
-            "Prodcut_Prize",
+            "Product_Prize",
             "Product_Image",
             "Product_Link",
+            "Product_ID"
         ]
 
     def read_csv_file(self):
@@ -30,7 +30,8 @@ class ManageProductCode:
         self.values = self.df.shape[0]+1
 
         print(f'Read csv file and convert to DataFrame successfully')
-
+    def update_csv_file(self):
+        self.df.to_csv(self.file_path,header=False)
     def get_product_details(self):
         print(f'Your path is {self.file_path}')
         print(f'Your product code is {self.product_code}')
@@ -51,7 +52,7 @@ class ManageProductCode:
             cursor.execute(
             'CREATE TABLE IF NOT EXISTS furniture(id integer primary key, name text, size text, price integer, image text, link text, code text, read integer default 0)')
         
-    def get_all_furniture(self) -> List[Furniture]:
+    def get_all_furniture(self) -> List["Furniture"]:
         with DatabaseConnection('furniture_data.db') as connection:
             cursor = connection.cursor()
 
@@ -68,5 +69,5 @@ class ManageProductCode:
         with DatabaseConnection('furniture_data.db') as connection:
             cursor = connection.cursor()
             cursor.execute(
-                'INSERT INTO furniture (name, size, price, image, link, code) VALUES (?, ?, ?, ?, ?, ?)', (self.df["Product_Name"], self.df["Product_Size"], self.df["Product_Prize"], self.df["Product_Image"],self.df["Product_link"],self.df["Product_ID"]))
+                'INSERT INTO furniture (name, size, price, image, link, code) VALUES (?, ?, ?, ?, ?, ?)', (dataframe["Product_Name"], dataframe["Product_Size"], dataframe["Product_Prize"], dataframe["Product_Image"],dataframe["Product_Link"],dataframe["Product_ID"]))
     
