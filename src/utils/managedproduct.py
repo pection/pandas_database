@@ -5,6 +5,8 @@
 # @Last modified time: 2021-01-29T09:21:58+07:00
 import pandas as pd
 from typing import List, Tuple
+
+from pandas.io.parsers import read_csv
 from utils.database_connection import DatabaseConnection
 class ManageProductCode:
     pd.set_option('display.max_rows', 500)
@@ -21,7 +23,13 @@ class ManageProductCode:
             "Product_Link",
             "Product_ID"
         ]
+    def __enter__(self):
+        index_csv = self.file_path.index("csv")
+        self.product_code = self.file_path[index_csv - 3:index_csv - 1]
+        self.df = pd.read_csv(self.file_path, names=self.columns_name)
+        self.values = self.df.shape[0]+1
 
+        print(f'Read csv file and convert to DataFrame successfully')
     def read_csv_file(self) -> None:
         index_csv = self.file_path.index("csv")
 
