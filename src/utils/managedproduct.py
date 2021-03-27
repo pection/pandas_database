@@ -12,7 +12,7 @@ class ManageProductCode:
     pd.set_option('display.max_rows', 500)
     pd.set_option('display.max_columns', 500)
     pd.set_option('display.width', 1000)
-    def __init__(self, filepath: str):
+    def __init__(self,filepath: str):
         self.file_path = filepath
         self.values = 0
         self.columns_name = [
