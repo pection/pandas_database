@@ -72,7 +72,18 @@ class ManageProductCode:
             cursor = connection.cursor()
 
             cursor.execute('DELETE FROM furniture WHERE code=?', (product_code,))
-
+    def get_product_image(self):
+        return self.df["Product_Image"]        
+    def get_product_size(self):
+        return self.df["Product_Size"]
+    def get_product_name(self):
+        return self.df["Product_Name"]
+    def get_product_id(self):
+        return self.df["Product_ID"]
+    def get_product_prize(self):
+        return self.df["Product_Prize"]
+    def df_to_dict(self):
+        return self.df.to_dict('records')
     def insert_furniture(self,dataframe) -> None:
         with DatabaseConnection('furniture_data.db') as connection:
             cursor = connection.cursor()
