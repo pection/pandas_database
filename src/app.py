@@ -52,7 +52,7 @@ if __name__ == '__main__':
     
     Dining_table.read_csv_file()
     Dining_table.get_product_details()
-    
+    :wq
     breakpoint()
     # Dining_table.remove_link_string()
     
